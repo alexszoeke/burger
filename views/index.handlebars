@@ -1,0 +1,25 @@
+<ul>
+  {{#each burgers}}
+    <li>
+      <p>
+        {{this.id}}. {{this.burger_name}}
+
+        <button data-burgerid="{{this.id}}" class="eat">Devour</button>
+      </p>
+    </li>
+  {{/each}}
+</ul>
+
+<script type="text/javascript">
+$.ajax("/devour/burger/" + id, {
+      type: "DELETE"
+    }).then(
+      function() {
+        console.log("devoured", id);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+});
+</script>
