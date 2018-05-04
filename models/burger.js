@@ -7,7 +7,7 @@ var burger = {
         });
     },
 
-    // insertOne : 
+    // insertOne: 
     // },
 
     updateOne: function (tableInput, col, valOfCol) {
