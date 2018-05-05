@@ -6,31 +6,41 @@
     <div class="col-md-6 not-devoured">
       <ul>
         {{#each burger}} 
+        {{#unless devoured}}
         <li>
           <p>
             {{this.burger_name}}
             <button type="button" class="eat btn btn-light" data-burgerid="{{this.id}}">Devour It!</button>
           </p>
         </li>
+        {{/unless}} 
         {{/each}}
       </ul>
     </div>
-    
-    <div class="col-md-6" id="devoured">
 
+    <div class="col-md-6" id="devoured">
+      <ul>
+        {{#each burger}} 
+          {{#if devoured}} 
+      <li>
+        {{this.burger}}
+      </li>
+      
+          {{/if}} 
+        {{/each}}
+      </ul>
     </div>
 
   </div>
+  
   <div class="row justify-content-center">
+    <br>
     <form>
       <div class="form-group">
         <label for="burger-text-area"></label>
         <textarea class="form-control" id="burger-text-area" rows="4"></textarea>
       </div>
-      
+      <button type="submit" class="btn btn-light create">Submit</button>
     </form>
-  </div>
-  <div class="row justify-content-center">
-    <button type="submit" class="btn btn-light">Submit</button>
   </div>
 </div>
