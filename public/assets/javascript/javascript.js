@@ -1,27 +1,16 @@
-$(".create").on("click", function (event) {
-  event.preventDefault();
-  var newBurger;
+$(document).ready(function() {
+    
+  $(".eat").on("submit", function(event) {
+    event.preventDefault();
 
-  $.ajax("/create/burger", {
-    type: "POST",
-    data: newBurger
-  }).then(function(){
-    location.reload();
-  })
-});
+    var burger_id = $(this).children(".burger_id").val();
+    console.log(burger_id);
+    $.ajax({
+      method: "PUT",
+      url: "/burgers/" + burger_id
+    }).then(function(data) {
+      location.reload();
+    });
 
-
-
-$(".eat").on("click", function(event) {
-  var id = $(this).data("id");
-
-$.ajax("/devour/burger/:id" + id, {
-      type: "PUT"
-    }).then(
-      function() {
-        console.log("devoured", id);
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
   });
+});
